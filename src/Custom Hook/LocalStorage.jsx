@@ -1,41 +1,28 @@
 import { useEffect, useState } from "react";
 
-export default function Demo(){
-    const {store,changeMode}= useTheme('light')
-    return <div>
-        <p>{store}</p>
-        <button onClick={changeMode}>Click me</button>
+export default function Demo() {
+  const { store, changeMode } = useTheme("Dark");
+  return (
+    <div>
+      <p>{store}</p>
+      <button onClick={changeMode}>Click me</button>
     </div>
+  );
 }
-    
 
-export function useTheme(mode) {
+export function useTheme(defaultmode = 'Dark') {
   const [store, setStore] = useState(()=>{
-    return (function () {
-       if (localStorage.getItem("theme")) {
-          return localStorage.getItem("theme");
-        } else {
-          console.log("Theme me kuch nhi");
-          localStorage.setItem("theme", mode);
-          return mode;
-        }
-    })();
+    return localStorage.getItem('theme')||defaultmode
   });
 
-
+  useEffect(()=>{
+    localStorage.setItem('theme',store)
+  },[store])
 
   function changeMode() {
-    if (store !== "dark") {
-      setStore(() => {
-        localStorage.setItem('theme',"dark")
-        return "dark"});
-      
-    } else if (store === "dark") {
-      setStore(() => {
-        localStorage.setItem('theme',"light")
-        return "light"});
+        let temp = store === 'Light'?'Dark':'Light'
+      setStore(temp);
     }
-  }
 
   return { store, changeMode };
 }
