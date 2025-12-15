@@ -9,8 +9,8 @@ export const fetchProducts = createApi({
   tagTypes: [fetchProducts],
 
 
-  endpoints: (build) => ({
-    fetchAllProducts: build.query({
+  endpoints: (builder) => ({
+    fetchAllProducts: builder.query({
       query: () => "/products",
       providesTags: [fetchProducts],
     }),
