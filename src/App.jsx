@@ -11,8 +11,7 @@ function App() {
     <>
       <SearchBox/>
       <Home/>
-      <Counter/>
-      <Demo/>
+      
     </>
   )
 }
