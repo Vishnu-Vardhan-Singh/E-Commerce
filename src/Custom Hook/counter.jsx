@@ -3,18 +3,18 @@ import { useState } from "react";
 export default function Counter() {
   const {value,input,add,subtract,reset} = useCount();
   return (
-        <div className="flex [&>*]:border-2 [&>*]:mx-1 [&>*]:p-1 [&>*]:rounded-2xl [&>*]:hover:cursor-pointer" >
+        <div className="flex *:border-2 *:mx-1 *:p-1 *:rounded-2xl *:hover:cursor-pointer" >
         
-        <input className='!rounded-[0px] !cursor-default'  type="text" placeholder='Enter value' onChange={input} />
+        <input className='rounded-none! cursor-default!'  type="text" placeholder='Enter value' onChange={input} />
         <button onClick={add}>Addition</button>
         <button onClick={subtract}>Subtraction</button>
         <button onClick={reset}>Reset</button>
-        <div className='!rounded-[0px] !cursor-default'>{value}</div>
+        <div className='rounded-none! cursor-default!'>{value}</div>
         </div>
   );
 }
 
-
+      
 function useCount(){
         const [value,setValue]=useState(0)
         const [value1,setValue1] = useState(1)

@@ -48,7 +48,7 @@ export default function SearchBox() {
           />
         </div>
         <div
-          className={`hiddden absolute border-2 w-[203px] bg-amber-50 [&>*]:hover:bg-blue-500 [&>*]:cursor-pointer`}
+          className={`hiddden absolute border-2 w-50.75 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer`}
           style={{
             top: `${bottom}px`,
             left: `${left}px`,
