@@ -19,7 +19,7 @@ export default function SearchBox() {
   console.log(val)
   return (
     <>
-      <div className="flex overflow-clip border-2 p-2 gap-2 items-center justify-between " style={{color:store!=="Dark"?"black":"White",backgroundColor:store!=="Dark"?"White":"black"}}>
+      <div className=" flex overflow-clip border-2 p-2 gap-2 items-center justify-between " style={{color:store!=="Dark"?"White":"black",backgroundColor:store!=="Dark"?"black":"White"}}>
         <img
           src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
           alt="flipkart logo"

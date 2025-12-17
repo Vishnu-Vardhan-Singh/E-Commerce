@@ -10,7 +10,7 @@ export default function Demo() {
   );
 }
 
-export function useTheme(defaultmode = 'Dark') {
+export function useTheme(defaultmode = 'Light') {
   const [store, setStore] = useState(()=>{
     return localStorage.getItem('theme')||defaultmode
   });
