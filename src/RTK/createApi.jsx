@@ -13,6 +13,7 @@ export const fetchProducts = createApi({
       providesTags: ["Products"],
     }),
   }),
+  
 });
 
 export const { useFetchAllProductsQuery } = fetchProducts;
