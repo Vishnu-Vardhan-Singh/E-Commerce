@@ -2,7 +2,6 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTheme } from "../Custom Hook/LocalStorage";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-// import Wishlist from "../ReactRouter/Wishlist";
 import { FaCartShopping } from "react-icons/fa6";
 import { GoHeartFill } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";

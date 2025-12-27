@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@layer utilities {
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
+        /* scroll-snap-align: center; */
+        /* scroll-snap-type: x mandatory; */
+    }
+}

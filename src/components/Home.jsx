@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
 import { useFetchAllProductsQuery } from "../RTK/createApi";
-import Loading from "./Loading";
 import { setCart, setWishlist } from "../RTK/createSlice";
-import { FaSearch } from "react-icons/fa";
+import Loading from "./Loading";
+import Buybtn from "./Buybtn";
+import Wishbtn from "./Wishbtn";
+
 
 export default function Home() {
   const { data, isError, isLoading } = useFetchAllProductsQuery();
@@ -33,12 +35,11 @@ export default function Home() {
                 <p>Price : {val.price}</p>
                 <p>Rating : {val.rating.rate}</p>
                 <div className="flex  text-[12px] justify-evenly w-full mb-1 *:hover:cursor-pointer">
-                  <button onClick={()=>{dispatch(setCart(val))}} className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                    Add Cart
-                  </button>
-                  <button onClick={()=>{dispatch(setWishlist(val))}} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                  <Buybtn val={val}>Add Cart</Buybtn>
+                  
+                  <Wishbtn val={val}>
                     Add Wishlist
-                  </button>
+                  </Wishbtn>
                 </div>
               </div>
             </div>
