@@ -8,6 +8,7 @@ export default function Category() {
   useEffect(() => {
     let arr2 = [];
     if (!isLoading) {
+
       setCtgry(
         data
           .filter(({ category }) => {
@@ -17,15 +18,22 @@ export default function Category() {
             }
             return false;
           })
-          .map(({ category }) => category)
+          .map(({ category,id }) => ({category,id}))
       );
+
     }
+    
   }, [data]);
-  if(ctgry){console.log(ctgry);
-    return ctgry.map((val)=><button className='bg-amber-200 mx-2 px-2 py-1 cursor-pointer transition-all '>{val}</button>)
+  const [demo,setDemo] = useState(5656)
 
+  console.log(demo)
+
+  if (ctgry) {
+    console.log(ctgry);
+    return <div className='flex justify-center'>{ctgry.map((val) => (
+      <button className="bg-amber-200 mx-2 px-2 py-1 cursor-pointer transition-all " onClick={()=>{}} key={val.id}>
+        {val.category}
+      </button>
+    ))}</div>
   }
-  
-
-  
 }

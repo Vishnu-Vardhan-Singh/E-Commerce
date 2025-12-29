@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { useFetchAllProductsQuery } from "../RTK/createApi";
-import { setCart, setWishlist } from "../RTK/createSlice";
-import Loading from "./Loading";
-import Buybtn from "./Buybtn";
-import Wishbtn from "./Wishbtn";
+import { useFetchAllProductsQuery } from "../../RTK/createApi";
+import { setCart, setWishlist } from "../../RTK/createSlice";
+import Loading from "../Loading";
+import Buybtn from "../Buybtn";
+import Wishbtn from "../Wishbtn";
 
 
 export default function Home() {

@@ -43,7 +43,7 @@ export default function Banner() {
   }, []);
 
   return (
-    <div className={"min-w-full"}>
+    <div className={"min-w-full" }>
       <div
         className={
           "my-2 flex overflow-scroll hide-scrollbar snap-x snap-mandatory cursor-grab bg-amber-300 scroll-auto min-w-full" 
