@@ -7,6 +7,7 @@ import { GoHeartFill } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
 import { IoIosArrowDropright } from "react-icons/io";
 import { IoMenuSharp } from "react-icons/io5";
+import { createPortal } from "react-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -71,12 +72,14 @@ export default function Navbar() {
           }`}
         />
       </div>
-      <div
+    {createPortal(
+    <div
         className={`hidden absolute border-2 w-50.75 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer ''`}
         style={{
           top: `${bottom}px`,
           left: `${left}px`,
           display: val || "none",
+          
         }}
         onMouseEnter={() => {
           setVal("block");
@@ -94,7 +97,9 @@ export default function Navbar() {
         <p>Gift Cards</p>
         <p>Notifications</p>
         <p>Log Out</p>
-      </div>
+      </div>,
+  document.body
+)}
       <div id="cart" title="cart" className="hover:cursor-pointer">
         <NavLink to="/cart" className={"relative"}>
           <FaCartShopping className="text-2xl" />
@@ -103,7 +108,7 @@ export default function Navbar() {
               "bg-red-500 text-[8px] w-3 h-3 rounded-full text-white absolute -left-1 top-0 flex justify-center items-center]"
             }
           >
-            1
+            0
           </span>
         </NavLink>
       </div>
@@ -112,10 +117,10 @@ export default function Navbar() {
           <GoHeartFill className="text-2xl" />
           <span
             className={
-              "bg-red-500 text-[8px] w-3 h-3 rounded-full text-white absolute -left-1 top-0  flex justify-center items-center]"
+              "bg-red-500 text-[8px] w-3 h-3 rounded-full text-white absolute -left-1 top-0  flex justify-center items-center"
             }
           >
-            1
+            0
           </span>
         </NavLink>
       </div>

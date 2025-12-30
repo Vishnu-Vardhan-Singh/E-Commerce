@@ -31,7 +31,7 @@ export default function Category() {
   if (ctgry) {
     console.log(ctgry);
     return <div className='flex justify-center'>{ctgry.map((val) => (
-      <button className="bg-amber-200 mx-2 px-2 py-1 cursor-pointer transition-all " onClick={()=>{}} key={val.id}>
+      <button className="bg-amber-700 rounded-full mx-2 px-3 py-1 cursor-pointer transition-all flex items-center justify-center text-amber-50 hover:bg-amber-300 hover:text-amber-800" onClick={()=>{}} key={val.id}>
         {val.category}
       </button>
     ))}</div>
