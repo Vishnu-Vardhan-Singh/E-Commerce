@@ -25,7 +25,6 @@ export default function Navbar() {
     setLeft(() => ref1.current.getBoundingClientRect().left);
   }, [val]);
 
-  console.log(val);
   return (
     <nav
       className=" flex overflow-clip border-2 p-2 gap-2 items-center justify-between  sticky top-0 left-0 right-0 h-14 mb-2"
@@ -49,7 +48,7 @@ export default function Navbar() {
           onChange={null}
           className="w-full focus:outline-0 flex-1 px-2 text-sm"
         />
-        <button className="bg-orange-500 w-9 rounded-r-2xl border-l-2">
+        <button className="bg-orange-500 w-9 rounded-r-2xl border-l-2" onClick={null}>
           <FaSearch className="mx-auto" />
         </button>
       </div>
@@ -113,7 +112,7 @@ export default function Navbar() {
         </NavLink>
       </div>
       <div id="Wishlist" title="Wishlist" className="hover:cursor-pointer">
-        <NavLink to="./wishlist" className={"relative"}>
+        <NavLink to="/wishlist" className={"relative"}>
           <GoHeartFill className="text-2xl" />
           <span
             className={

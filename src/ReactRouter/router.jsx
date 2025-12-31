@@ -5,26 +5,61 @@ import Cart from "../components/Router Page/Cart";
 import Wishlist from "../components/Router Page/Wishlist";
 import Banner from "../components/Banner";
 import Category from "../components/Categories";
+import Navbar from "../components/Navbar";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
     children: [
       {
         index: true,
-        element: <><Category/><Banner/><Home /></>,
+        element: (
+          <>
+            <Banner />
+            <Home />
+          </>
+        ),
       },
       {
-        path: "wishlist",
-        element: <Wishlist/>,
-        caseSensitive: true // its default value is "false" and if you set it true then value of "to" from "NavLink" should always match the "path" value with case sensitive behaviour
-      },
+        path:"men's clothing",
+        element:<div>men's clothing</div>
+      }
+      ,
       {
-        path: "cart",
-        element: <Cart />,
-      },
+        path:"jewelery",
+        element:<div>jewelery</div>
+      }
+      ,
+      {
+        path:"electronics",
+        element:<div>electronics</div>
+      }
+      ,
+      {
+        path:"women's clothing",
+        element:<div>women's clothing</div>
+      }
     ],
+  },
+  {
+    path: "wishlist",
+    element: (
+      <>
+        <Navbar />
+        <Wishlist />
+      </>
+    ),
+    caseSensitive: true, // its default value is "false" and if you set it true then value of "to" from "NavLink" should always match the "path" value with case sensitive behaviour
+  },
+  {
+    path: "cart",
+    element: (
+      <>
+        <Navbar />
+        <Cart />
+      </>
+    ),
   },
 ]);
 
