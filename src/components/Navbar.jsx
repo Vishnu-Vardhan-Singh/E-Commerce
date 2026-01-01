@@ -8,11 +8,12 @@ import { CgProfile } from "react-icons/cg";
 import { IoIosArrowDropright } from "react-icons/io";
 import { IoMenuSharp } from "react-icons/io5";
 import { createPortal } from "react-dom";
-
-
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  
+  const selectorCart = useSelector((state)=>state.cart);
+  const selectorWishlist = useSelector((state)=>state.ecom);
+  // console.log(selector)
   const navigate = useNavigate();
   const { store, changeMode } = useTheme();
 
@@ -51,7 +52,10 @@ export default function Navbar() {
           onChange={null}
           className="w-full focus:outline-0 flex-1 px-2 text-sm"
         />
-        <button className="bg-orange-500 w-9 rounded-r-2xl border-l-2" onClick={null}>
+        <button
+          className="bg-orange-500 w-9 rounded-r-2xl border-l-2"
+          onClick={null}
+        >
           <FaSearch className="mx-auto" />
         </button>
       </div>
@@ -74,34 +78,33 @@ export default function Navbar() {
           }`}
         />
       </div>
-    {createPortal(
-    <div
-        className={`hidden absolute border-2 w-50.75 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer ''`}
-        style={{
-          top: `${bottom}px`,
-          left: `${left}px`,
-          display: val || "none",
-          
-        }}
-        onMouseEnter={() => {
-          setVal("block");
-        }}
-        onMouseLeave={() => {
-          setVal("none");
-        }}
-      >
-        <p>Profile</p>
-        <p>Super Coin Zone</p>
-        <p>Flipkart Plus Zone</p>
-        <p>Orders</p>
-        <p>Wishlist</p>
-        <p>Coupons</p>
-        <p>Gift Cards</p>
-        <p>Notifications</p>
-        <p>Log Out</p>
-      </div>,
-  document.body
-)}
+      {createPortal(
+        <div
+          className={`hidden absolute border-2 w-50.75 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer ''`}
+          style={{
+            top: `${bottom}px`,
+            left: `${left}px`,
+            display: val || "none",
+          }}
+          onMouseEnter={() => {
+            setVal("block");
+          }}
+          onMouseLeave={() => {
+            setVal("none");
+          }}
+        >
+          <p>Profile</p>
+          <p>Super Coin Zone</p>
+          <p>Flipkart Plus Zone</p>
+          <p>Orders</p>
+          <p>Wishlist</p>
+          <p>Coupons</p>
+          <p>Gift Cards</p>
+          <p>Notifications</p>
+          <p>Log Out</p>
+        </div>,
+        document.body
+      )}
       <div id="cart" title="cart" className="hover:cursor-pointer">
         <NavLink to="/cart" className={"relative"}>
           <FaCartShopping className="text-2xl" />
@@ -110,7 +113,7 @@ export default function Navbar() {
               "bg-red-500 text-[8px] w-3 h-3 rounded-full text-white absolute -left-1 top-0 flex justify-center items-center]"
             }
           >
-            0
+            {Object.keys(selectorCart).length}
           </span>
         </NavLink>
       </div>
@@ -122,7 +125,7 @@ export default function Navbar() {
               "bg-red-500 text-[8px] w-3 h-3 rounded-full text-white absolute -left-1 top-0  flex justify-center items-center"
             }
           >
-            0
+            {Object.keys(selectorWishlist.wishList).length}
           </span>
         </NavLink>
       </div>

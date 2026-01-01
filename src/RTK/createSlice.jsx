@@ -7,7 +7,8 @@ export const ecom = createSlice({
     reducers:{
         setWishlist : (state,action)=>{
             state.wishList[action.payload.id] = action.payload
-        }
+        },
+
     }
 })
 
