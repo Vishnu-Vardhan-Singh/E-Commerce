@@ -7,12 +7,14 @@ import { Provider } from "react-redux";
 import { store } from "./RTK/Store";
 import Category from "./components/Categories";
 import { FilterContext } from "./useContext/categoryContext";
+import { ProductList } from "./useContext/productsListContext";
 
 createRoot(document.getElementById("root")).render(
-
   <Provider store={store}>
-    <FilterContext><RouterProvider router={router} /></FilterContext>
-  
+    <ProductList>
+      <FilterContext>
+        <RouterProvider router={router} />
+      </FilterContext>
+    </ProductList>
   </Provider>
 );
-

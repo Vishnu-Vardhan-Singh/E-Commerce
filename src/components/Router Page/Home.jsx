@@ -4,40 +4,32 @@ import { setCart, setWishlist } from "../../RTK/createSlice";
 import Loading from "../Loading";
 import Buybtn from "../Buybtn";
 import Wishbtn from "../Wishbtn";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Filter } from "../../useContext/categoryContext";
+import { PrdctList } from "../../useContext/productsListContext";
 
 export default function Home() {
   const { data, isError, isLoading } = useFetchAllProductsQuery();
+  const { productsList, setProductsList } = useContext(PrdctList);
+  useEffect(() => {
+    setProductsList(() => data || []);
+  }, [data]);
   const { filterVal, setFilterVal } = useContext(Filter);
-  
 
   if (isLoading) {
     return <Loading />;
   } else if (isError) {
     return <p>There is somthing wrong.</p>;
-  }else
-  {
-    
+  } else {
+    console.log(productsList);
   }
 
-  console.log(
-    data.filter((val) => {
-      if (val.category === "All") {
-        return true;
-      } else if (val.category === filterVal) {
-        return true;
-      }
-    })
-  );
-
-  
   return (
     <>
       <div className="flex flex-wrap justify-evenly item bg-orange-400 border-black border shadow-lg">
-        {data
+        {productsList
           .filter((val) => {
-            if (filterVal === 'All') {
+            if (filterVal === "All") {
               return true;
             } else if (val.category === filterVal) {
               return true;

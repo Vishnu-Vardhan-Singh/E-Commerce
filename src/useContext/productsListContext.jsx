@@ -1,9 +1,9 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const PrdctList = createContext(null);
 
 export function ProductList({ children }) {
-  const [productsList, setProductsList] = useState(null);
+  const [productsList, setProductsList] = useState([]);
 
   return (
     <PrdctList.Provider value={{ productsList, setProductsList }}>

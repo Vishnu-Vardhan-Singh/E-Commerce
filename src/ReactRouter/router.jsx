@@ -6,6 +6,7 @@ import Wishlist from "../components/Router Page/Wishlist";
 import Banner from "../components/Banner";
 import Category from "../components/Categories";
 import Navbar from "../components/Navbar";
+import { ProductList } from "../useContext/productsListContext";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Banner />
-            <Home />
+           <Home />
           </>
         ),
       },
