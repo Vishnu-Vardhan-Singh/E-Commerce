@@ -5,7 +5,7 @@ import { cart } from "./cartSlice";
 
 export const store = configureStore({
   reducer: {
-    [fetchProducts.reducerPath]: fetchProducts.reducer,
+   [fetchProducts.reducerPath]: fetchProducts.reducer,
     ecom : ecom.reducer,
     cart: cart.reducer
   },

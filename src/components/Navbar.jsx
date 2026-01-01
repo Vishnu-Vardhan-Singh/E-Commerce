@@ -9,7 +9,10 @@ import { IoIosArrowDropright } from "react-icons/io";
 import { IoMenuSharp } from "react-icons/io5";
 import { createPortal } from "react-dom";
 
+
+
 export default function Navbar() {
+  
   const navigate = useNavigate();
   const { store, changeMode } = useTheme();
 

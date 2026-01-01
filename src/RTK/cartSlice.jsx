@@ -19,7 +19,10 @@ export const cart = createSlice({
         state[action.payload].qty = --state[action.payload].qty;
       }
     },
+    removeCartItem:(state,action)=>{
+          delete state[action.payload]
+    }
   },
 });
 
-export const { updateCart, increaseQty,decreaseQty } = cart.actions;
+export const { updateCart, increaseQty,decreaseQty,removeCartItem} = cart.actions;

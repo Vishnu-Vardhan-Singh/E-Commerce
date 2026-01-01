@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const Filter = createContext(null);
 
 export function FilterContext({ children }) {
-  const [filterVal, setFilterVal] = useState('Vishnu');
+  const [filterVal, setFilterVal] = useState('All');
   return (
     <Filter.Provider value={{ filterVal, setFilterVal }}>
       {children}

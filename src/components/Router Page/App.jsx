@@ -5,11 +5,9 @@ import Counter from '../../Custom Hook/counter'
 import Demo from '../../Custom Hook/LocalStorage'
 import { Outlet } from 'react-router-dom'
 import Category from '../Categories'
-import { Filter, FilterContext } from '../../useContext/category'
+import { Filter, FilterContext } from '../../useContext/categoryContext'
 
 function App() {
-  const {filterVal, setFilterVal} = useContext(Filter)
-  console.log(filterVal)
   return (
     <>
       <Navbar/>

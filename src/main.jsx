@@ -6,7 +6,7 @@ import router from "./ReactRouter/router";
 import { Provider } from "react-redux";
 import { store } from "./RTK/Store";
 import Category from "./components/Categories";
-import { FilterContext } from "./useContext/category";
+import { FilterContext } from "./useContext/categoryContext";
 
 createRoot(document.getElementById("root")).render(
 
