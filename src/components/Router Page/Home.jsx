@@ -4,17 +4,21 @@ import { setCart, setWishlist } from "../../RTK/createSlice";
 import Loading from "../Loading";
 import Buybtn from "../Buybtn";
 import Wishbtn from "../Wishbtn";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Filter } from "../../useContext/categoryContext";
 
 export default function Home() {
   const { data, isError, isLoading } = useFetchAllProductsQuery();
   const { filterVal, setFilterVal } = useContext(Filter);
+  
 
   if (isLoading) {
     return <Loading />;
   } else if (isError) {
     return <p>There is somthing wrong.</p>;
+  }else
+  {
+    
   }
 
   console.log(
@@ -26,6 +30,8 @@ export default function Home() {
       }
     })
   );
+
+  
   return (
     <>
       <div className="flex flex-wrap justify-evenly item bg-orange-400 border-black border shadow-lg">

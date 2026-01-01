@@ -11,8 +11,8 @@ import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  const selectorCart = useSelector((state)=>state.cart);
-  const selectorWishlist = useSelector((state)=>state.ecom);
+  const selectorCart = useSelector((state) => state.cart);
+  const selectorWishlist = useSelector((state) => state.ecom);
   // console.log(selector)
   const navigate = useNavigate();
   const { store, changeMode } = useTheme();
@@ -31,7 +31,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className=" flex overflow-clip border-2 p-2 gap-2 items-center justify-between  sticky top-0 left-0 right-0 h-14 mb-2"
+      className="flex overflow-clip border-2 p-2 gap-2 items-center justify-between  sticky top-0 left-0 right-0 h-14 mb-2"
       style={{
         color: store !== "Dark" ? "White" : "black",
         backgroundColor: store !== "Dark" ? "black" : "White",
@@ -61,7 +61,7 @@ export default function Navbar() {
       </div>
       <div
         name="name"
-        className="border-2 flex flex-wrap items-center gap-1 hover:cursor-pointer px-2 pr-0.5"
+        className="relative border-2 flex overflow-hidden items-center gap-1 hover:cursor-pointer px-2 pr-0.5 h-7 min-w-27  "
         onMouseEnter={() => {
           setVal("block");
         }}
@@ -70,20 +70,20 @@ export default function Navbar() {
         }}
         ref={ref1}
       >
-        <CgProfile />
-        <span>Vishnu Vardhan Singh </span>
-        <IoIosArrowDropright
-          className={`transition-transform duration-200 ${
+        <div className='h-5 w-5'><CgProfile className='h-5 w-5' /></div>
+        <div className='text-left overflow-hidden text-nowrap w-25'>Vishnu Vardhan Singh </div>
+        <div className='h-5 w-5'><IoIosArrowDropright
+          className={`block h-5 w-5 transition-transform duration-200 ${
             val === "block" ? "rotate-90" : ""
           }`}
-        />
-      </div>
-      {createPortal(
+        /></div>
+        {createPortal(
         <div
-          className={`hidden absolute border-2 w-50.75 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer ''`}
+          className={`absolute border-2 w-50.75 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer ''`}
           style={{
             top: `${bottom}px`,
             left: `${left}px`,
+            // left: `0px`,
             display: val || "none",
           }}
           onMouseEnter={() => {
@@ -105,6 +105,8 @@ export default function Navbar() {
         </div>,
         document.body
       )}
+      </div>
+      
       <div id="cart" title="cart" className="hover:cursor-pointer">
         <NavLink to="/cart" className={"relative"}>
           <FaCartShopping className="text-2xl" />

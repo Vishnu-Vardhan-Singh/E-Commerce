@@ -26,11 +26,12 @@ export default function Category() {
     }
   }, [data]);
 
+
   if (ctgry) {
-    return (
+    return (<div className="flex justify-around bg-yellow-200 py-4">
       <div className="flex justify-center">
         <button
-          className="bg-amber-700 rounded-full mx-2 px-3 py-1 cursor-pointer transition-all flex items-center justify-center text-amber-50 hover:bg-amber-300 hover:text-amber-800"
+          className="bg-indigo-500 h-8 shadow-[-5px_-5px_21px_-5px_rgba(59,_130,_246,_1)] rounded-full mx-2 px-3 py-1 cursor-pointer transition-all flex items-center justify-center text-amber-50 hover:bg-amber-100 hover:text-amber-800"
           onClick={(e) => {
             console.log(e.target.value);
             setFilterVal(()=>e.target.value)
@@ -41,7 +42,7 @@ export default function Category() {
         </button>
         {ctgry.map((val) => (
           <button
-            className="bg-amber-700 rounded-full mx-2 px-3 py-1 cursor-pointer transition-all flex items-center justify-center text-amber-50 hover:bg-amber-300 hover:text-amber-800"
+            className="overflow-hidden text-nowrap bg-indigo-500 h-8 shadow-[-5px_-5px_21px_-5px_rgba(59,_130,_246,_1)]   rounded-full mx-2 px-3 py-1 cursor-pointer transition-all flex items-center justify-center text-amber-50 hover:bg-amber-100 hover:text-amber-800"
             onClick={(e) => {
               console.log(e.target.value);
               setFilterVal(()=>e.target.value)
@@ -52,6 +53,13 @@ export default function Category() {
             {val.category}
           </button>
         ))}
+      </div>
+      <select className='border-2 hover:shadow-l shadow-amber-950 hover:cursor-pointer' onClick={(e)=>{console.log(e.target.value)}}>
+        <option value = 'PLH'>Price : Low to High</option>
+        <option value = 'PHL'>Price : High to Low</option>
+        <option value = 'RLH'>Rating : Low to High</option>
+        <option value = 'RHL'>Rating : High to Low</option>
+      </select>
       </div>
     );
   }
