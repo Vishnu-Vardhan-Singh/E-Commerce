@@ -28,7 +28,17 @@ export default function Navbar() {
   useLayoutEffect(() => {
     setBottom(() => ref1.current.getBoundingClientRect().bottom);
     setLeft(() => ref1.current.getBoundingClientRect().left);
+    if(val === 'block'){
+      document.body.classList.add('overflow-hidden')}
+    else{
+      document.body.classList.remove('overflow-hidden')
+    }
+    return ()=>{
+      document.body.classList.remove('overflow-hidden')
+    }
+
   }, [val]);
+
 
   return (
     <nav
@@ -81,7 +91,7 @@ export default function Navbar() {
         /></div>
         {createPortal(
         <div
-          className={`fixed border-2 w-35 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer ''`}
+          className={`fixed border-2 w-35 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer`}
           style={{
             top: `${bottom}px`,
             left: `${left}px`,

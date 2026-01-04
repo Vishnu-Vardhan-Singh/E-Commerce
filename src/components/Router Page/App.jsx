@@ -9,7 +9,7 @@ import { Filter, FilterContext } from '../../useContext/categoryContext'
 
 function App() {
   return (
-    <>
+    < >
       <Navbar/>
       <Category/>
       <Outlet/>

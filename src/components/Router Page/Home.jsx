@@ -9,6 +9,7 @@ import { Filter } from "../../useContext/categoryContext";
 import { PrdctList } from "../../useContext/productsListContext";
 import PopUp from "./popUp";
 import { popContext } from "../../useContext/popContext";
+import { createPortal } from "react-dom";
 
 export default function Home() {
   const { popDisplay, setPopDisplay } = useContext(popContext);
@@ -38,8 +39,9 @@ export default function Home() {
 
   return (
     <>
-      <PopUp />
-      <div className="flex flex-wrap justify-evenly item bg-red-400 border-black border shadow-lg">
+      {createPortal(<PopUp />,document.body)}
+      
+      <div className="flex flex-wrap justify-evenly item bg-red-400 border-black border shadow-lg ">
         {productsList
           .filter((val) => {
             if (filterVal === "All") {
