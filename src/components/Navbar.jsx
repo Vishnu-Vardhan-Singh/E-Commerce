@@ -9,6 +9,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 import { IoMenuSharp } from "react-icons/io5";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
+import logo from '../assets/E-Shop-logo-3.png'
 
 export default function Navbar() {
   const selectorCart = useSelector((state) => state.cart);
@@ -31,25 +32,26 @@ export default function Navbar() {
 
   return (
     <nav
-      className="flex overflow-clip border-2 p-2 gap-2 items-center justify-between  sticky top-0 left-0 right-0 h-14 mb-2"
+      className="  flex overflow-clip border-2 p-2 gap-2 items-center justify-between  sticky top-0 left-0 right-0 h-14 mb-2"
       style={{
         color: store !== "Dark" ? "White" : "black",
         backgroundColor: store !== "Dark" ? "black" : "White",
       }}
     >
-      <img
-        src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
+      <div className='w-30 flex items-center'>
+        <img
+        src={logo}
         alt="flipkart logo"
         className="hover:cursor-pointer"
         onClick={() => {
           navigate("/");
         }}
-      />
+      /></div>
 
       <div className="border-2 w-[50%] flex bg-blue-300 rounded-2xl h-8">
         <input
           type="text"
-          onChange={null}
+          onChange={(e)=>{console.log(e.target.value)}}
           className="w-full focus:outline-0 flex-1 px-2 text-sm"
         />
         <button
@@ -61,7 +63,7 @@ export default function Navbar() {
       </div>
       <div
         name="name"
-        className="relative border-2 flex overflow-hidden items-center gap-1 hover:cursor-pointer px-2 pr-0.5 h-7 min-w-27  "
+        className="relative border-2 flex overflow-hidden items-center gap-1 hover:cursor-pointer px-1 h-7 min-w-26  "
         onMouseEnter={() => {
           setVal("block");
         }}
@@ -71,7 +73,7 @@ export default function Navbar() {
         ref={ref1}
       >
         <div className='h-5 w-5'><CgProfile className='h-5 w-5' /></div>
-        <div className='text-left overflow-hidden text-nowrap w-25'>Vishnu Vardhan Singh </div>
+        <div className='text-left overflow-hidden text-nowrap min-w-12'>Vishnu Vardhan Singh </div>
         <div className='h-5 w-5'><IoIosArrowDropright
           className={`block h-5 w-5 transition-transform duration-200 ${
             val === "block" ? "rotate-90" : ""
@@ -79,7 +81,7 @@ export default function Navbar() {
         /></div>
         {createPortal(
         <div
-          className={`absolute border-2 w-50.75 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer ''`}
+          className={`fixed border-2 w-35 bg-amber-50 *:hover:bg-blue-500 *:cursor-pointer ''`}
           style={{
             top: `${bottom}px`,
             left: `${left}px`,

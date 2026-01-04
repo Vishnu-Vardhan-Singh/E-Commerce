@@ -7,13 +7,25 @@ import Wishbtn from "../Wishbtn";
 import { useContext, useEffect, useState } from "react";
 import { Filter } from "../../useContext/categoryContext";
 import { PrdctList } from "../../useContext/productsListContext";
+import PopUp from "./popUp";
+import { popContext } from "../../useContext/popContext";
 
 export default function Home() {
+  const { popDisplay, setPopDisplay } = useContext(popContext);
   const { data, isError, isLoading } = useFetchAllProductsQuery();
   const { productsList, setProductsList } = useContext(PrdctList);
   useEffect(() => {
     setProductsList(() => data || []);
-  }, [data]);
+    if (popDisplay === "block") {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [data, popDisplay]);
   const { filterVal, setFilterVal } = useContext(Filter);
 
   if (isLoading) {
@@ -26,7 +38,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-wrap justify-evenly item bg-orange-400 border-black border shadow-lg">
+      <PopUp />
+      <div className="flex flex-wrap justify-evenly item bg-red-400 border-black border shadow-lg">
         {productsList
           .filter((val) => {
             if (filterVal === "All") {
@@ -39,6 +52,9 @@ export default function Home() {
             return (
               <div
                 key={val.id}
+                onClick={() => {
+                  setPopDisplay(() => "block");
+                }}
                 className="w-50 h-70.5 my-2 rounded-2xl border-2 flex flex-wrap items-end bg-white hover:cursor-pointer "
               >
                 <div className=" h-[50%] w-full mx-1">
@@ -59,9 +75,12 @@ export default function Home() {
                   <p>Price : {val.price}</p>
                   <p>Rating : {val.rating.rate}</p>
                   <div className="flex  text-[12px] justify-evenly w-full mb-1 *:hover:cursor-pointer">
-                    <Buybtn val={val}>Add Cart</Buybtn>
-
-                    <Wishbtn val={val}>Add Wishlist</Wishbtn>
+                    <Buybtn val={val} >
+                      Add Cart
+                    </Buybtn>
+                    <Wishbtn val={val}>
+                      Add Wishlist
+                    </Wishbtn>
                   </div>
                 </div>
               </div>
