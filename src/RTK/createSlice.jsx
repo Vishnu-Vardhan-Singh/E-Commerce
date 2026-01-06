@@ -6,7 +6,7 @@ export const ecom = createSlice({
     initialState: initialState,
     reducers:{
         setWishlist : (state,action)=>{
-            state.wishList[action.payload.id] = action.payload
+            state.wishList[action.payload.id] = {...action.payload,toggleBtn:'Go to List'}
         },
         removeWishItem:(state,action)=>{
           delete state.wishList[action.payload]

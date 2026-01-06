@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFetchAllProductsQuery } from "../../RTK/createApi";
 import { setWishlist } from "../../RTK/createSlice";
 import Loading from "../Loading";
@@ -12,6 +12,7 @@ import { popContext } from "../../useContext/popContext";
 import { createPortal } from "react-dom";
 
 export default function Home() {
+  
   const { popDisplay, setPopDisplay,popDisplayContent, setPopDisplayContent } = useContext(popContext);
   const { data, isError, isLoading } = useFetchAllProductsQuery();
   const { productsList, setProductsList } = useContext(PrdctList);
@@ -27,7 +28,7 @@ export default function Home() {
       document.body.classList.remove("overflow-hidden");
     };
   }, [data, popDisplay]);
-  const { filterVal, setFilterVal } = useContext(Filter);
+  const { filterVal, setFilterVal} = useContext(Filter);
 
   if (isLoading) {
     return <Loading />;
@@ -41,7 +42,7 @@ export default function Home() {
     <>
       {createPortal(<PopUp />,document.body)}
       
-      <div className="flex flex-wrap justify-start item bg-red-400 border-black border shadow-lg ">
+      <div className="flex flex-wrap justify-start item bg-red-400   shadow-black shadow">
         {productsList
           .filter((val) => {
             if (filterVal === "All") {
@@ -60,7 +61,7 @@ export default function Home() {
                   console.log(popDisplayContent)
 
                 }}
-                className=" m-2  w-50 h-70.5 rounded-2xl border-2 flex flex-wrap items-end bg-white hover:cursor-pointer "
+                className="shadow-black shadow  m-2  w-50 h-70.5 rounded-2xl flex flex-wrap items-end bg-white hover:cursor-pointer "
               >
                 <div className=" h-[50%] w-full mx-1">
                   <img
@@ -84,7 +85,7 @@ export default function Home() {
                       Add Cart
                     </Buybtn>
                     <Wishbtn val={val}>
-                      Add Wishlist
+                     Add Wishlist
                     </Wishbtn>
                   </div>
                 </div>

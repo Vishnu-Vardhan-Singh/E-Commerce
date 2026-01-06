@@ -4,11 +4,11 @@ import { removeWishItem } from "../../RTK/createSlice";
 export default function Wishlist() {
   const selector = useSelector((state) => state.ecom.wishList);
   const dispatch = useDispatch()  
-
+  console.log(selector)
   return (
     <div className="border-2">
       <p className="font-bold text-center text-4xl ">
-        Wishlist {console.log(Object.values(selector))}
+        Wishlist
       </p>
       {Object.values(selector).map((val) => {
         return (

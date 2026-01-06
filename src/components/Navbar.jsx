@@ -30,7 +30,7 @@ export default function Navbar() {
   const [search,setSearch] = useState([])
 
   function getValue(e) {
-    
+
   const regex = new RegExp(e.target.value, "i");
 
   setProductsList(() => {
@@ -156,6 +156,7 @@ export default function Navbar() {
         </NavLink>
       </div>
       <NavLink
+        to='/profile'
         id="Profile"
         title="Profile"
         className="hover:cursor-pointer "

@@ -8,7 +8,7 @@ export const cart = createSlice({
       if (Object.hasOwn(state, action.payload.id)) {
         return state;
       } else {
-        state[action.payload.id] = { ...action.payload, qty: 1 };
+        state[action.payload.id] = { ...action.payload, qty: 1,toggleBtn:'Go to Cart'};
       }
     },
     increaseQty: (state, action) => {

@@ -7,6 +7,7 @@ import Banner from "../components/Banner";
 import Category from "../components/Categories";
 import Navbar from "../components/Navbar";
 import { ProductList } from "../useContext/productsListContext";
+import Profile from "../components/Router Page/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,15 @@ const router = createBrowserRouter([
       <>
         <Navbar />
         <Cart />
+      </>
+    ),
+  },
+  {
+    path: "profile",
+    element: (
+      <>
+        <Navbar />
+        <Profile />
       </>
     ),
   },
