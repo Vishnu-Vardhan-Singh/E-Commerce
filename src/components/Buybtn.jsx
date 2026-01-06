@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { setCart } from "../RTK/createSlice";
 import { updateCart } from "../RTK/cartSlice";
 
 export default function Buybtn({ val,children }) {

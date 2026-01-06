@@ -3,7 +3,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { popContext } from "../../useContext/popContext";
 
 export default function PopUp() {
-  const { popDisplay, setPopDisplay } = useContext(popContext);
+  const { popDisplay, setPopDisplay,popDisplayContent, setPopDisplayContent } = useContext(popContext);
   return (
     <>
       <div
@@ -25,15 +25,15 @@ export default function PopUp() {
           <div className="flex-1 min-h-0">
             <div className="h-full w-full flex">
               <img
-                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
+                src={popDisplayContent.image}
                 className="w-[40%] h-full object-contain block p-3"
               />
               <div className="w-[60%] bg-red-400 content-center pl-4 *:my-4 *:text-4xl">
-                <p>Title:</p>
-                <p>Description:</p>
-                <p>Category:</p>
-                <p>Rating:</p>
-                <p>Price:</p>
+                <p>Title: {popDisplayContent.title}</p>
+                <p>Description:{popDisplayContent.description}</p>
+                <p>Category:{popDisplayContent.category}</p>
+                <p>Rating:{popDisplayContent.rating?.rate}</p>
+                <p>Price:{popDisplayContent.price}</p>
               </div>
             </div>
           </div>

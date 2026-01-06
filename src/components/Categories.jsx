@@ -10,8 +10,6 @@ export default function Category() {
   const { filterVal, setFilterVal } = useContext(Filter);
   const { productsList, setProductsList } = useContext(PrdctList);
 
-  console.log(productsList);
-
   const [ctgry, setCtgry] = useState();
   useEffect(() => {
     let arr2 = [];

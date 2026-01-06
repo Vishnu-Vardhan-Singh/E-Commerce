@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTheme } from "../Custom Hook/LocalStorage";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
@@ -10,20 +10,33 @@ import { IoMenuSharp } from "react-icons/io5";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 import logo from '../assets/E-Shop-logo-3.png'
+import { PrdctList } from "../useContext/productsListContext";
+import { useFetchAllProductsQuery } from "../RTK/createApi";
 
 export default function Navbar() {
+  const {data} = useFetchAllProductsQuery()
   const selectorCart = useSelector((state) => state.cart);
   const selectorWishlist = useSelector((state) => state.ecom);
-  // console.log(selector)
+  console.log(data)
   const navigate = useNavigate();
   const { store, changeMode } = useTheme();
 
   const ref1 = useRef(null);
 
   const [val, setVal] = useState();
-
+  const { productsList, setProductsList } = useContext(PrdctList);
   const [bottom, setBottom] = useState();
   const [left, setLeft] = useState();
+  const [search,setSearch] = useState([])
+
+  function getValue(e) {
+    
+  const regex = new RegExp(e.target.value, "i");
+
+  setProductsList(() => {
+    return data.filter(({ title }) => regex.test(title));
+  });
+}
 
   useLayoutEffect(() => {
     setBottom(() => ref1.current.getBoundingClientRect().bottom);
@@ -61,7 +74,7 @@ export default function Navbar() {
       <div className="border-2 w-[50%] flex bg-blue-300 rounded-2xl h-8">
         <input
           type="text"
-          onChange={(e)=>{console.log(e.target.value)}}
+          onChange={getValue}
           className="w-full focus:outline-0 flex-1 px-2 text-sm"
         />
         <button
@@ -82,7 +95,7 @@ export default function Navbar() {
         }}
         ref={ref1}
       >
-        <div className='h-5 w-5'><CgProfile className='h-5 w-5' /></div>
+        
         <div className='text-left overflow-hidden text-nowrap min-w-12'>Vishnu Vardhan Singh </div>
         <div className='h-5 w-5'><IoIosArrowDropright
           className={`block h-5 w-5 transition-transform duration-200 ${
@@ -105,7 +118,6 @@ export default function Navbar() {
             setVal("none");
           }}
         >
-          <p>Profile</p>
           <p>Super Coin Zone</p>
           <p>Flipkart Plus Zone</p>
           <p>Orders</p>
@@ -144,11 +156,11 @@ export default function Navbar() {
         </NavLink>
       </div>
       <NavLink
-        id="seller"
-        title="Seller-Account"
+        id="Profile"
+        title="Profile"
         className="hover:cursor-pointer "
       >
-        <IoMenuSharp className="text-2xl" />
+        <CgProfile className='h-5 w-5' />
       </NavLink>
       <button
         onClick={() => {

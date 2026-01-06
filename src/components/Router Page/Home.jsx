@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useFetchAllProductsQuery } from "../../RTK/createApi";
-import { setCart, setWishlist } from "../../RTK/createSlice";
+import { setWishlist } from "../../RTK/createSlice";
 import Loading from "../Loading";
 import Buybtn from "../Buybtn";
 import Wishbtn from "../Wishbtn";
@@ -12,7 +12,7 @@ import { popContext } from "../../useContext/popContext";
 import { createPortal } from "react-dom";
 
 export default function Home() {
-  const { popDisplay, setPopDisplay } = useContext(popContext);
+  const { popDisplay, setPopDisplay,popDisplayContent, setPopDisplayContent } = useContext(popContext);
   const { data, isError, isLoading } = useFetchAllProductsQuery();
   const { productsList, setProductsList } = useContext(PrdctList);
   useEffect(() => {
@@ -34,14 +34,14 @@ export default function Home() {
   } else if (isError) {
     return <p>There is somthing wrong.</p>;
   } else {
-    console.log(productsList);
+    true
   }
 
   return (
     <>
       {createPortal(<PopUp />,document.body)}
       
-      <div className="flex flex-wrap justify-evenly item bg-red-400 border-black border shadow-lg ">
+      <div className="flex flex-wrap justify-start item bg-red-400 border-black border shadow-lg ">
         {productsList
           .filter((val) => {
             if (filterVal === "All") {
@@ -56,8 +56,11 @@ export default function Home() {
                 key={val.id}
                 onClick={() => {
                   setPopDisplay(() => "block");
+                  setPopDisplayContent(()=>val)
+                  console.log(popDisplayContent)
+
                 }}
-                className="w-50 h-70.5 my-2 rounded-2xl border-2 flex flex-wrap items-end bg-white hover:cursor-pointer "
+                className=" m-2  w-50 h-70.5 rounded-2xl border-2 flex flex-wrap items-end bg-white hover:cursor-pointer "
               >
                 <div className=" h-[50%] w-full mx-1">
                   <img
