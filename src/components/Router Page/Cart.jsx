@@ -21,10 +21,10 @@ export default function Cart() {
         return (
           <div
             key={val.id}
-            className="h-25 border-2 text-left flex m-2 p-2 justify-between"
+            className="h-25 border-2 text-left flex m-2 p-2 justify-between max-sm:h-auto"
           >
             <div className="flex justify-end">
-              <img src={val.image} alt="" className="object-contain h-full" />
+              <img src={val.image} alt="" className="object-contain h-full max-sm:h-20 max-sm:w-20" />
               <div className="ml-2">
                 <p>{val.title}</p>
                 <p className="bg-blue-400 w-fit px-1">Price : {val.price}</p>
@@ -68,7 +68,7 @@ export default function Cart() {
           </div>
         );
       })}
-      <div className="font-bold text-center text-4xl border-2">
+      <div className="font-bold text-center text-4xl border-2 max-sm:h-auto sticky bottom-1 left-0 right-0 bg-amber-50">
         Total :{" "}
         {Math.round(
           qnty.reduce((acc, { qty, price }) => {

@@ -53,13 +53,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className="max-sm:flex-col mt-2 flex shadow-black shadow max-sm:p-0 p-2 gap-2 items-center max-sm:h-auto  sticky top-0  left-0 right-0 h-14 mb-2 max-sm:gap-0 "
+      className="max-sm:flex-col mt-2 flex shadow-black shadow max-sm:p-0 p-2 gap-2 items-center max-sm:h-auto  sticky top-0  left-0 right-0 h-14 mb-2 max-sm:gap-0 max-sm:mx-0 "
       style={{
         color: store !== "Dark" ? "White" : "black",
         backgroundColor: store !== "Dark" ? "black" : "White",
       }}
     >
-      <div className='max-sm:border-b-2 max-sm:py-1 flex overflow-clip  p-2 gap-2 items-center grow max-sm:my-0 max-sm:py-0 '>
+      <div className='max-sm:border-b-2 max-sm:py-1 flex overflow-clip  p-2 gap-2 items-center grow max-sm:my-0'>
       <div className='w-30 flex items-center'>
         <img
         src={logo}
