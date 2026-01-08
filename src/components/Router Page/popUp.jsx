@@ -3,7 +3,8 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { popContext } from "../../useContext/popContext";
 
 export default function PopUp() {
-  const { popDisplay, setPopDisplay,popDisplayContent, setPopDisplayContent } = useContext(popContext);
+  const { popDisplay, setPopDisplay, popDisplayContent, setPopDisplayContent } =
+    useContext(popContext);
   return (
     <>
       <div
@@ -23,12 +24,14 @@ export default function PopUp() {
           </div>
 
           <div className="flex-1 min-h-0">
-            <div className="h-full w-full flex">
-              <img
-                src={popDisplayContent.image}
-                className="w-[40%] h-full object-contain block p-3"
-              />
-              <div className="w-[60%] bg-red-400 content-center pl-4 *:my-4 *:text-4xl">
+            <div className="h-full w-full flex max-sm:flex-col">
+              
+                <img
+                  src={popDisplayContent.image}
+                  className="w-[40%] h-full object-contain block p-3 max-sm:mx-auto max-sm:h-[25vh] max-sm:w-[25vh] "
+                />
+              
+              <div className="w-[60%] bg-red-400 content-center pl-4 *:my-4 *:text-[2vh] max-sm:w-full max-sm:min-h-[60%] max-sm:overflow-auto  ">
                 <p>Title: {popDisplayContent.title}</p>
                 <p>Description:{popDisplayContent.description}</p>
                 <p>Category:{popDisplayContent.category}</p>

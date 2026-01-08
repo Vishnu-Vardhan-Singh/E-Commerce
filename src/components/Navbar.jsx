@@ -6,7 +6,6 @@ import { FaCartShopping } from "react-icons/fa6";
 import { GoHeartFill } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
 import { IoIosArrowDropright } from "react-icons/io";
-import { IoMenuSharp } from "react-icons/io5";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 import logo from '../assets/E-Shop-logo-3.png'
@@ -27,7 +26,6 @@ export default function Navbar() {
   const { productsList, setProductsList } = useContext(PrdctList);
   const [bottom, setBottom] = useState();
   const [left, setLeft] = useState();
-  const [search,setSearch] = useState([])
 
   function getValue(e) {
 
@@ -55,12 +53,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className="  flex overflow-clip border-2 p-2 gap-2 items-center justify-between  sticky top-0 left-0 right-0 h-14 mb-2"
+      className="max-sm:flex-col mt-2 flex shadow-black shadow max-sm:p-0 p-2 gap-2 items-center max-sm:h-auto  sticky top-0  left-0 right-0 h-14 mb-2 max-sm:gap-0 "
       style={{
         color: store !== "Dark" ? "White" : "black",
         backgroundColor: store !== "Dark" ? "black" : "White",
       }}
     >
+      <div className='max-sm:border-b-2 max-sm:py-1 flex overflow-clip  p-2 gap-2 items-center grow max-sm:my-0 max-sm:py-0 '>
       <div className='w-30 flex items-center'>
         <img
         src={logo}
@@ -71,7 +70,7 @@ export default function Navbar() {
         }}
       /></div>
 
-      <div className="border-2 w-[50%] flex bg-blue-300 rounded-2xl h-8">
+      <div className="border-2 w-[50%] flex bg-blue-300 rounded-2xl h-8 grow">
         <input
           type="text"
           onChange={getValue}
@@ -84,6 +83,8 @@ export default function Navbar() {
           <FaSearch className="mx-auto" />
         </button>
       </div>
+      </div>
+      <div className='flex overflow-clip  p-2 gap-2 items-center justify-between max-sm:my-0 max-sm:py-0 '>
       <div
         name="name"
         className="relative border-2 flex overflow-hidden items-center gap-1 hover:cursor-pointer px-1 h-7 min-w-26  "
@@ -171,6 +172,7 @@ export default function Navbar() {
       >
         {store} Mode
       </button>
+      </div>
     </nav>
   );
 }

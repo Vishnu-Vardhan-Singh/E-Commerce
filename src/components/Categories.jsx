@@ -30,25 +30,28 @@ export default function Category() {
   function sort(e) {
     switch (e.target.value) {
       case "PLH":
-        setProductsList((prev)=>[...prev].sort((a,b)=>a.price-b.price));  
-        
-        
+        setProductsList((prev) => [...prev].sort((a, b) => a.price - b.price));
+
         break;
       case "PHL":
-        setProductsList((prev)=>[...prev].sort((a,b)=>b.price-a.price));  
+        setProductsList((prev) => [...prev].sort((a, b) => b.price - a.price));
         break;
       case "RLH":
-        setProductsList((prev)=>[...prev].sort((a, b) => a.rating.rate - b.rating.rate));
+        setProductsList((prev) =>
+          [...prev].sort((a, b) => a.rating.rate - b.rating.rate)
+        );
         break;
       case "RHL":
-        setProductsList((prev)=>[...prev].sort((a, b) => b.rating.rate - a.rating.rate));
+        setProductsList((prev) =>
+          [...prev].sort((a, b) => b.rating.rate - a.rating.rate)
+        );
         break;
     }
   }
   if (ctgry) {
     return (
-      <div className="flex justify-around bg-amber-200 py-4">
-        <div className="flex justify-center">
+      <div className="flex justify-around bg-amber-200 py-4 shadow-black shadow ">
+        <div className="max-sm:hidden flex justify-center">
           <button
             className="bg-indigo-500 h-8 shadow-black shadow rounded-full mx-2 px-3 py-1 cursor-pointer transition-all flex items-center justify-center text-amber-50 hover:bg-amber-100 hover:text-amber-800"
             onClick={(e) => {
@@ -74,13 +77,30 @@ export default function Category() {
           ))}
         </div>
         <select
-          className="border-2 hover:shadow-l shadow-amber-950 hover:cursor-pointer"
+          className="max-sm:block sm:hidden border-2 hover:shadow-l shadow-amber-950 hover:cursor-pointer  max-sm:text-[10px]"
+          onClick={(e) => {
+            console.log(e.target.value);
+            setFilterVal(() => e.target.value);
+          }}
+        >
+          <option hidden value='All'>Categories..</option>
+          <option value='All'>All</option>
+          {ctgry.map((val) => (
+            <option key={val.id} value={val.category}>
+              {val.category}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className="border-2 hover:shadow-l shadow-amber-950 hover:cursor-pointer  max-sm:text-[10px]"
           onClick={sort}
-        ><option hidden>Sort by...</option>
-          <option value="PLH">Price : Low to High</option>
-          <option value="PHL">Price : High to Low</option>
-          <option value="RLH">Rating : Low to High</option>
-          <option value="RHL">Rating : High to Low</option>
+        >
+          <option hidden>Sort by...</option>
+          <option value="PLH" >Price : Low to High</option>
+          <option value="PHL" >Price : High to Low</option>
+          <option value="RLH" >Rating : Low to High</option>
+          <option value="RHL" >Rating : High to Low</option>
         </select>
       </div>
     );

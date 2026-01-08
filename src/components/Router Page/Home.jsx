@@ -4,7 +4,7 @@ import { setWishlist } from "../../RTK/createSlice";
 import Loading from "../Loading";
 import Buybtn from "../Buybtn";
 import Wishbtn from "../Wishbtn";
-import { useContext, useEffect, useState } from "react";
+import { lazy, useContext, useEffect, useState } from "react";
 import { Filter } from "../../useContext/categoryContext";
 import { PrdctList } from "../../useContext/productsListContext";
 import PopUp from "./popUp";
@@ -42,7 +42,7 @@ export default function Home() {
     <>
       {createPortal(<PopUp />,document.body)}
       
-      <div className="flex flex-wrap justify-start item bg-red-400   shadow-black shadow">
+      <div className="flex flex-wrap justify-center item bg-red-400   shadow-black shadow sm:justify-start">
         {productsList
           .filter((val) => {
             if (filterVal === "All") {
@@ -68,6 +68,7 @@ export default function Home() {
                     src={val.image}
                     alt=""
                     className="object-contain h-full w-full"
+                    loading='lazy'
                   />
                 </div>
 

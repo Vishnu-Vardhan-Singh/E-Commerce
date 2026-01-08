@@ -8,9 +8,8 @@ export default function Banner() {
   const domref = useRef(null);
 
   useLayoutEffect(() => {
-
     const carousel = domref.current;
-    console.log(carousel.offsetWidth)
+    console.log(carousel.offsetWidth);
     if (!carousel) return;
 
     let slideWidth = carousel.offsetWidth;
@@ -22,14 +21,14 @@ export default function Banner() {
       carousel.scrollLeft = slideWidth;
     }
     function scroll() {
-      slideWidth = carousel.children[0].offsetWidth
+      slideWidth = carousel.children[0].offsetWidth;
       console.log(carousel.scrollLeft);
       console.log(slideWidth);
-      if (carousel.scrollLeft < (slideWidth/2)) {
-        carousel.scrollLeft = slideWidth*4
+      if (carousel.scrollLeft < slideWidth / 2) {
+        carousel.scrollLeft = slideWidth * 4;
       }
-      if(carousel.scrollLeft > ((slideWidth*4)+(slideWidth/2))) {
-        carousel.scrollLeft = slideWidth
+      if (carousel.scrollLeft > slideWidth * 4 + slideWidth / 2) {
+        carousel.scrollLeft = slideWidth;
       }
     }
     window.addEventListener("load", load);
@@ -39,24 +38,38 @@ export default function Banner() {
       window.removeEventListener("load", load);
       carousel.removeEventListener("scroll", scroll);
     };
-
   }, []);
 
   return (
-    <div className={"min-w-full" }>
-      <div
-        className={
-          "my-2 flex overflow-scroll hide-scrollbar snap-x snap-mandatory cursor-grab bg-amber-300 scroll-auto min-w-full" 
-        }
-        ref={domref}
-      >
-        <img src={banner4} className={"snap-center"} />
-        <img src={banner1} className={"snap-center"} />
-        <img src={banner2} className={"snap-center"} />
-        <img src={banner3} className={"snap-center"} />
-        <img src={banner4} className={"snap-center"} />
-        <img src={banner1} className={"snap-center"} />
-      </div>
+    <div className="min-w-full my-1">
+  <div
+    ref={domref}
+    className="
+      flex
+      overflow-x-scroll
+      snap-x snap-mandatory
+      hide-scrollbar
+      bg-amber-300
+      min-w-full
+    "
+  >
+    <div className="min-w-full flex justify-center snap-center">
+      <img src={banner4} className="block max-w-full" />
     </div>
+
+    <div className="min-w-full flex justify-center snap-center">
+      <img src={banner1} className="block max-w-full" />
+    </div>
+
+    <div className="min-w-full flex justify-center snap-center">
+      <img src={banner2} className="block max-w-full" />
+    </div>
+
+    <div className="min-w-full flex justify-center snap-center">
+      <img src={banner3} className="block max-w-full" />
+    </div>
+  </div>
+</div>
+
   );
 }
