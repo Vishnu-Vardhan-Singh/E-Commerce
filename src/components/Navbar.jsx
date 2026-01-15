@@ -59,7 +59,7 @@ export default function Navbar() {
         backgroundColor: store !== "Dark" ? "black" : "White",
       }}
     >
-      <div className='max-sm:border-b-2 max-sm:py-1 flex overflow-clip  p-2 gap-2 items-center grow max-sm:my-0'>
+      <div className='max-sm:border-b-2 max-sm:py-1 flex overflow-clip  p-2 gap-2 items-center grow max-sm:my-0 max-sm:w-full'>
       <div className='w-30 flex items-center'>
         <img
         src={logo}
@@ -84,7 +84,7 @@ export default function Navbar() {
         </button>
       </div>
       </div>
-      <div className='flex overflow-clip  p-2 gap-2 items-center justify-between max-sm:my-0 max-sm:py-0 '>
+      <div className='flex overflow-clip  p-2 gap-2 items-center justify-between max-sm:my-0 max-sm:py-0 max-sm:w-full max-sm:my-0.5'>
       <div
         name="name"
         className="relative border-2 flex overflow-hidden items-center gap-1 hover:cursor-pointer px-1 h-7 min-w-26  "
